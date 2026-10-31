@@ -1,124 +1,101 @@
 # Diario de Fotos
 
-Aplicativo Android para registrar momentos por meio de fotos, descricoes, data/hora e coordenadas de GPS. A interface foi desenvolvida com Kotlin, Jetpack Compose e Material 3.
+## Informacoes do aluno
 
-## Funcionalidades
+- **Nome:** Marcio Evandro Pereira da Silva
+- **Data de entrega:** 30/10/2026
 
-- Visualiza todas as entradas em uma lista de cards.
-- Captura fotos com CameraX.
-- Armazena as imagens localmente.
-- Permite adicionar uma descricao a cada foto.
-- Obtém latitude e longitude com GPS.
-- Exibe os detalhes de uma entrada.
-- Abre as coordenadas em um aplicativo de mapas.
-- Permite excluir a entrada e remover sua foto.
-- Permite descartar uma foto ainda nao salva.
+## Tema do projeto
 
-## Tecnologias e bibliotecas
+O tema escolhido foi um diario de fotos. A escolha foi motivada pela utilidade de aplicativos que registram atividades do dia a dia, permitindo guardar momentos com uma imagem, descricao, data e localizacao.
+
+O aplicativo foi criado para facilitar esse registro, mantendo tudo organizado em uma lista simples e permitindo consultar ou excluir cada entrada posteriormente.
+
+## Descricao do aplicativo
+
+O Diario de Fotos possui telas para lista, camera, nova entrada e detalhes.
+
+1. Na tela inicial, o usuario visualiza suas entradas em cards.
+2. Ao selecionar **Nova foto**, a CameraX abre para capturar uma imagem.
+3. Depois da captura, o usuario pode escrever uma descricao e obter sua coordenada GPS.
+4. Ao salvar, a foto e seus dados ficam registrados localmente.
+5. Na tela de detalhes, a foto pode ser visualizada, a coordenada pode ser aberta em mapas ou a entrada pode ser excluida.
+
+## Tecnologias utilizadas
 
 - Kotlin
-- Jetpack Compose
-- Material 3
+- Jetpack Compose e Material 3
 - Navigation Compose
-- Android ViewModel
-- StateFlow
+- Android ViewModel, StateFlow, `remember` e `mutableStateOf`
 - CameraX
-- Fused Location Provider
-- Coil
-- Kotlin coroutines
-- Persistencia local baseada em JSON
-
-> Estado da persistencia: o projeto atualmente usa um arquivo `entries.json` em `filesDir` e nao Room. Para atender integralmente ao requisito do projeto final de persistencia com Room, sera necessario adicionar Entity, DAO, RoomDatabase e migrations/repository com Room.
+- Localizacao GPS com Play Services
+- Coil para exibicao das imagens
 
 ## Arquitetura
 
-O projeto utiliza uma separacao inspirada em MVVM:
+O projeto possui separacao inspirada em MVVM:
 
 ```text
-UI/Compose -> DiaryViewModel -> EntryRepository -> armazenamento local
+UI Compose -> DiaryViewModel -> EntryRepository -> Armazenamento local
 ```
 
-- `ui/`: telas Compose, navegacao e ViewModel.
-- `data/`: modelo de dados e repositorio local.
-- `MainActivity.kt`: inicializacao do Compose e configuracao das rotas.
+## Persistencia
 
-### Telas
+Atualmente, os dados das entradas sao armazenados em um arquivo JSON em `filesDir`, enquanto as imagens ficam em uma pasta local separada.
 
-| Tela | Responsabilidade |
-|---|---|
-| Lista | Exibe as entradas cadastradas e o botao para nova foto |
-| Camera | Solicita permissao, mostra a CameraX e captura a foto |
-| Nova entrada | Exibe a foto, descricao e coordenadas GPS |
-| Detalhes | Exibe a entrada completa, mapa e opcao de excluir |
+Para atender integralmente ao requisito de persistencia com Room, seria necessario adicionar Entity, DAO, RoomDatabase e utilizar o Room no repositorio.
 
-### Fluxo de navegação
+## Navegacao
 
 ```text
-Lista -> Câmera -> Nova entrada -> Lista
+Lista -> Camera -> Nova entrada -> Lista
 Lista -> Detalhes -> Lista
 ```
 
-## Requisitos do projeto
-
-| Requisito | Status |
-|---|---|
-| Aplicativo em Kotlin | Atendido |
-| Interface com Jetpack Compose | Atendido |
-| Pelo menos duas telas | Atendido |
-| Navegacao Compose | Atendido |
-| Arquitetura MVVM | Atendido |
-| Persistencia com Room | Pendente |
-
 ## Permissoes
 
-O aplicativo solicita no uso:
+O aplicativo utiliza:
 
-- `CAMERA`
-- `ACCESS_FINE_LOCATION`
-- `ACCESS_COARSE_LOCATION`
+- Camera
+- Localizacao aproximada
+- Localizacao precisa
 
-É necessário conceder as permissoes para capturar fotos e obter coordenadas GPS.
+## Prototipo
 
-## Requisitos do ambiente
+As imagens abaixo podem ser substituidas pelas capturas do prototipo desenvolvido em Figma ou pelo wireframe utilizado no projeto.
 
-- Android Studio
-- JDK 17
-- Android SDK 34
-- Dispositivo ou emulador Android com API 24 ou superior
-- Dispositivo fisico recomendado para testar câmera e GPS
+```text
+imagens/
+├── lista.png
+├── camera.png
+├── nova-entrada.png
+└── detalhes.png
+```
+
+Para anexar as telas, crie a pasta `imagens` na raiz do projeto, adicione as imagens e referencie-as desta forma:
+
+```markdown
+![Tela de lista](imagens/lista.png)
+![Tela da camera](imagens/camera.png)
+![Tela de nova entrada](imagens/nova-entrada.png)
+![Tela de detalhes](imagens/detalhes.png)
+```
 
 ## Como executar
 
-1. Abra a pasta do projeto no Android Studio.
-2. Aguarde a sincronização do Gradle.
-3. Conecte um dispositivo ou inicie um emulador.
-4. Selecione o modulo `app`.
-5. Execute o aplicativo com **Run** ou pressione `Shift + F10`.
+1. Abra o projeto no Android Studio.
+2. Aguarde a sincronizacao do Gradle.
+3. Conecte um dispositivo fisico ou execute um emulador.
+4. Selecione o modulo `app` e clique em **Run**.
 
-No Windows, também é possível compilar pelo terminal:
+Windows:
 
 ```powershell
 .\gradlew.bat assembleDebug
 ```
 
-O APK será gerado em:
+É recomendado usar um dispositivo fisico para testar a camera e o GPS.
 
-```text
-app\build\outputs\apk\debug\app-debug.apk
-```
+## Observacoes
 
-## Estrutura principal
-
-```text
-app/src/main/java/com/example/diariofotos/
-├── MainActivity.kt
-├── data/
-│   ├── DiaryEntry.kt
-│   └── EntryRepository.kt
-└── ui/
-    ├── CameraScreen.kt
-    ├── DetailScreen.kt
-    ├── DiaryViewModel.kt
-    ├── ListScreen.kt
-    └── NewEntryScreen.kt
-```
+O projeto foi desenvolvido seguindo o fluxo de cadastro de momentos, com foco em uma interface simples, funcional e organizada.
