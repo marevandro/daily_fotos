@@ -60,21 +60,16 @@ O aplicativo utiliza:
 
 ## Prototipo
 
-### Tela 1
-
-![Tela 1](img/tela1.png)
-
-### Tela 2
-
-![Tela 2](img/tela2.png)
-
-### Tela 3
-
-![Tela 3](img/tela3.png)
-
-### Tela 4
-
-![Tela 4](img/tela4.png)
+<table>
+  <tr>
+    <td align="center"><strong>Tela 1</strong><br><img src="img/tela1.png" width="300"></td>
+    <td align="center"><strong>Tela 2</strong><br><img src="img/tela2.png" width="300"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Tela 3</strong><br><img src="img/tela3.png" width="300"></td>
+    <td align="center"><strong>Tela 4</strong><br><img src="img/tela4.png" width="300"></td>
+  </tr>
+</table>
 
 ## Como executar
 
