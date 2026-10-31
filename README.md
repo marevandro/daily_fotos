@@ -7,9 +7,7 @@
 
 ## Tema do projeto
 
-O tema escolhido foi um diario de fotos. A escolha foi motivada pela utilidade de aplicativos que registram atividades do dia a dia, permitindo guardar momentos com uma imagem, descricao, data e localizacao.
-
-O aplicativo foi criado para facilitar esse registro, mantendo tudo organizado em uma lista simples e permitindo consultar ou excluir cada entrada posteriormente.
+O tema que escolhi foi um diário de fotos. Escolhi esse tema porque já existem muitos aplicativos assim por aí e resolvi fazer o meu.
 
 ## Descricao do aplicativo
 
@@ -62,24 +60,21 @@ O aplicativo utiliza:
 
 ## Prototipo
 
-As imagens abaixo podem ser substituidas pelas capturas do prototipo desenvolvido em Figma ou pelo wireframe utilizado no projeto.
+### Tela 1
 
-```text
-imagens/
-├── lista.png
-├── camera.png
-├── nova-entrada.png
-└── detalhes.png
-```
+![Tela 1](img/tela1.png)
 
-Para anexar as telas, crie a pasta `imagens` na raiz do projeto, adicione as imagens e referencie-as desta forma:
+### Tela 2
 
-```markdown
-![Tela de lista](imagens/lista.png)
-![Tela da camera](imagens/camera.png)
-![Tela de nova entrada](imagens/nova-entrada.png)
-![Tela de detalhes](imagens/detalhes.png)
-```
+![Tela 2](img/tela2.png)
+
+### Tela 3
+
+![Tela 3](img/tela3.png)
+
+### Tela 4
+
+![Tela 4](img/tela4.png)
 
 ## Como executar
 
